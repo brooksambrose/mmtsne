@@ -9,7 +9,7 @@ hbeta <- function(D, beta=1)
 {
   ## Compute the perplexity and the P-row for a specific value of the precision of a Gaussian distribution.
   P <- exp(-D * beta)
-  sumP <- sum(P)
+  sumP <- sum(P) + .Machine$double.eps
   H <- log(sumP) + beta * sum(D * P) / sumP
   P <- P / sumP
   list("H"=H,"P"=P)
